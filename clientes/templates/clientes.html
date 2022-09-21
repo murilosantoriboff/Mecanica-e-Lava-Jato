@@ -8,15 +8,15 @@
 {% block dashboard %}
     <div class="container">
         <div class="row">
-            <div class="col-md card-dashboard">
+            <div class="col-md card-dashboard" onclick="exibir_form('1')">
                 <p class="text-card">Adicionar Clientes</p>
             </div>
-            <div class="col-md card-dashboard">
+            <div class="col-md card-dashboard" onclick="exibir_form('2')">
                 <p class="text-card">Atualizar Clientes</p>
             </div>
         </div>
 
-        <div class="adicionar-cliente">
+        <div class="adicionar-cliente" id="adicionar-cliente">
             <form action="{% url 'clientes' %}" method="POST">{% csrf_token %}
                 <div class="row">
                     <div class="col-md">
@@ -63,6 +63,11 @@
             </form>
             
         </div>
+
+        <div id="att_cliente">
+            teste
+        </div>
+
     </div>
     <script src="{% static 'clientes/js/clientes.js' %}"></script>
 {% endblock %}
