@@ -64,8 +64,13 @@
             
         </div>
 
-        <div id="att_cliente">
-            teste
+        <div class="form-control" id="att_cliente">
+            <p></p>
+            <select id="sel_cliente">
+                {% for cliente in clientes %}
+                <option value="{{cliente.id}}">{{cliente.nome}}</option>
+                {% endfor %}
+            </select>
         </div>
 
     </div>
