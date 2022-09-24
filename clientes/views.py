@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import JsonResponse
 from .models import Cliente
 from .models import Carro
 import re
+from django.core import serializers
+import json
 
 def clientes(request):
     if request.method == 'GET':
@@ -40,3 +43,9 @@ def clientes(request):
             car.save()
 
         return HttpResponse('teste')
+
+def att_clientes(request):
+    id_cliente = request.POST.get('id_cliente')
+    cliente = Cliente.objects.filter(id=id_cliente)
+    cliente_json = json.loads(serializers.serialize('json', cliente))[0]['fields']
+    return JsonResponse(cliente_json)

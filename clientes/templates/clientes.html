@@ -66,11 +66,24 @@
 
         <div class="form-control" id="att_cliente">
             <p></p>
-            <select id="sel_cliente">
+            <select id="sel_cliente" onchange=dados_cliente()>
                 {% for cliente in clientes %}
                 <option value="{{cliente.id}}">{{cliente.nome}}</option>
                 {% endfor %}
             </select>
+            <br>
+            <hr>
+            <div id="form_att_clientes">
+                <p>Nome: </p>
+                <input id="nome" type="text" class="form-control">
+                <p>Sobrenome: </p>
+                <input id="sobrenome" type="text" class="form-control">
+                <p>Email: </p>
+                <input id="email" type="text" class="form-control">
+                <p>CPF: </p>
+                <input id="cpf" type="text" class="form-control">
+
+            </div>
         </div>
 
     </div>
