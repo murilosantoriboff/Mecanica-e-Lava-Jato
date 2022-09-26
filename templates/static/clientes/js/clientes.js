@@ -42,13 +42,33 @@ function dados_cliente() {
         document.getElementById('form_att_clientes').style.display = 'block'
 
         nome = document.getElementById('nome')
-        nome.value = data['nome']
+        nome.value = data['cliente']['nome']
         sobrenome = document.getElementById('sobrenome')
-        sobrenome.value = data['sobrenome']
+        sobrenome.value = data['cliente']['sobrenome']
         email = document.getElementById('email')
-        email.value = data['email']
+        email.value = data['cliente']['email']
         cpf = document.getElementById('cpf')
-        cpf.value = data['cpf']
+        cpf.value = data['cliente']['cpf']
+
+        div_carros = document.getElementById('carros')
+        div_carros.innerHTML = ''
+        for(i=0; i<data['carros'].length; i++){
+            console.log(data['carros'][i]['fields']['carro'])
+
+            div_carros.innerHTML += "<form action='' method=''>\
+            <div class='row'>\
+                <div class='col-md'>\
+                    <input class='form-control' type='text' name='carro' value='"+ data['carros'][i]['fields']['carros']+">\
+                </div>\
+                <div class='col-md'>\
+                    <input class='form-control' type='text' name='palca' value='"+ data['carros'][i]['fields']['placa']+">\
+                </div>\
+                <div class='col-md'>\
+                    <input class='form-control' type='text' name='ano' value='"+ data['carros'][i]['fields']['ano']+">\
+                </div>\
+            </div><br>"
+
+        }
 
     })
 }

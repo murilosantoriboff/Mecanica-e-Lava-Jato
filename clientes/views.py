@@ -1,3 +1,4 @@
+from pydoc import cli
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import JsonResponse
@@ -46,6 +47,14 @@ def clientes(request):
 
 def att_clientes(request):
     id_cliente = request.POST.get('id_cliente')
+    
     cliente = Cliente.objects.filter(id=id_cliente)
+    carros = Carro.objects.filter(cliente=cliente[0])
+    
+    carros_json = json.loads(serializers.serialize('json', carros))
+    carros_json = [{'fields': carro['fields', 'id':carro['pk']]} for carro in carros_json]
     cliente_json = json.loads(serializers.serialize('json', cliente))[0]['fields']
-    return JsonResponse(cliente_json)
+    data = {'cliente':cliente_json, 'carros':carros_json}
+
+    return JsonResponse(data)
+
